@@ -16,7 +16,7 @@ public class Jugador {
     String nombre;
     LocalDate fechaNacimiento;
 
-    public Jugador(double peso, int estatura, String nombre, LocalDate fechaNacimiento) {
+    public Jugador(String nombre, double peso, int estatura, LocalDate fechaNacimiento) {
         this.peso = peso;
         this.estatura = estatura;
         this.nombre = nombre;
@@ -54,6 +54,7 @@ public class Jugador {
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+    
 
     @Override
     public String toString() {
