@@ -7,9 +7,8 @@ package com.mycompany.trae2u3.vista;
 
 
 import com.mycompany.trae2u3.modelo.Jugador;
-import com.mycompany.trae2u3.servicio.JugadorService;
+import com.mycompany.trae2u3.servicio.JugadorServicioImpl;
 import java.time.LocalDate;
-import java.time.Month;
 /**
  *
  * @author LAB-2
@@ -18,19 +17,26 @@ public class Trae2u3 {
     
      public static void main(String[] args) {
     
-       var enner = new Jugador("Enner Valencia",80,175,LocalDate.of(1998, 02, 01));
-       var byron = new Jugador("Byron Castillo",80,175,LocalDate.of(1998, 02, 01));
-       var dominguez = new Jugador("Dida Dominguez",80,175,LocalDate.of(1998, 02, 01));
-       var galindez = new Jugador("Hernán Galindez",80,175,LocalDate.of(1998, 02, 01));
+       var enner = new Jugador(10,"Enner Valencia",80,175,LocalDate.of(1998, 02, 01));
+       var byron = new Jugador(20,"Byron Castillo",80,175,LocalDate.of(1998, 02, 01));
+       var dominguez = new Jugador(30,"Dida Dominguez",80,175,LocalDate.of(1998, 02, 01));
+       var galindez = new Jugador(40,"Ernan Galindez",80,175,LocalDate.of(1998, 02, 01));
+       var galindezNuevo = new Jugador(40,"Hernán Galindez",80,175,LocalDate.of(1990, 02, 01));
        
        
-       var baseDatosJugadores = new JugadorService;
-       baseDatosJugadores.crear(enner);
-       baseDatosJugadores.crear(byron);
-       baseDatosJugadores.crear(dominguez);
-       baseDatosJugadores.crear(galindez);
-       System.out.println(baseDatosJugadores.listar());
-       baseDatosJugadores.eliminarPorPosicion(1);
-       System.out.println(baseDatosJugadores.listar());
+       var jugadorDB = new JugadorServicioImpl();
+       jugadorDB.crear(enner);
+       jugadorDB.crear(byron);
+       jugadorDB.crear(dominguez);
+       jugadorDB.crear(galindez);
+       System.out.println(jugadorDB.listar());
+       jugadorDB.eliminar(20);
+       jugadorDB.eliminar(30);
+       System.out.println(jugadorDB.listar());
+       jugadorDB.modificar(40, galindezNuevo);
+       System.out.println(jugadorDB.listar());
+    
+        
     }
- }
+ 
+}

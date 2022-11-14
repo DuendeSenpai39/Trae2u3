@@ -11,16 +11,37 @@ import java.time.LocalDate;
  * @author LAB-2
  */
 public class Jugador {
-    double peso ;
-    int estatura;
-    String nombre;
-    LocalDate fechaNacimiento;
+    
+    private int codigo;
+    private String nombre;
+    private double peso;
+    private int estatura;
+    private LocalDate fechaNacimiento;
 
-    public Jugador(String nombre, double peso, int estatura, LocalDate fechaNacimiento) {
+    public Jugador(int codigo, String nombre, double peso, int estatura, LocalDate fechaNacimiento) {
+        this.codigo = codigo;
+        this.nombre = nombre;
         this.peso = peso;
         this.estatura = estatura;
-        this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public double getPeso() {
@@ -39,14 +60,6 @@ public class Jugador {
         this.estatura = estatura;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -55,11 +68,17 @@ public class Jugador {
         this.fechaNacimiento = fechaNacimiento;
     }
     
+    private int calcularEdad(){
+        var yearActual= LocalDate.now().getYear();
+        return yearActual-this.fechaNacimiento.getYear();
+    }
 
     @Override
     public String toString() {
-        return "Jugador{" + "peso=" + peso + ", estatura=" + estatura + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + '}';
+        return "Jugador{" + "codigo=" + codigo + ", nombre=" + nombre 
+                + ", peso=" + peso + ", estatura=" + estatura 
+                + ", fechaNacimiento=" + fechaNacimiento + '}'
+                + " tiene: "+this.calcularEdad()+" años";
     }
-    
-    
 }
+
